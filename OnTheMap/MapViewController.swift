@@ -32,6 +32,7 @@ class MapViewController: UIViewController {
 		api.getStudentLocations { (annotations, error) in
 			guard error == nil else {
 				self.showAlert("alert", message: error!, actionTitle: "Dismiss")
+				self.spinner.stopAnimating()
 				return
 			}
 			performUpdateOnMain(){
@@ -53,7 +54,7 @@ class MapViewController: UIViewController {
 	}
 	
 	// log out
-	@IBAction func logoutPressed(segue: UIStoryboardSegue) {
+	@IBAction func logoutPressed(sender: AnyObject) {
 		auth.deleteSessionID { (success, error) in
 			guard error == nil else {
 				self.showAlert("Error", message: error!, actionTitle: "Dismiss")

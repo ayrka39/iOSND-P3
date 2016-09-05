@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 
 
-class LocationViewController: UIViewController, MKMapViewDelegate {
+class LocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
 	
 	
 	@IBOutlet weak var topView: UIView!
@@ -33,7 +33,13 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.linkTextField.delegate = self
+		self.userLocationField.delegate = self
 		findView()
+	}
+	
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		self.view.endEditing(true)
 	}
 
 	
@@ -44,39 +50,20 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
 		}
 		let place = userLocationField.text
 		getLocation(place!)
-		submitView()
 	}
 	
 	
 	@IBAction func submitPressed(sender: AnyObject) {
-		
-		let objectId = User.sharedInstacne.objectId
-		guard objectId != "" else {
-			let mapString = userLocationField.text!
-			let mediaURL = linkTextField.text!
-			print(mapString)
-			api.postAStudentLocation(mapString, mediaURL: mediaURL) { (data, error) in
-				guard error == nil else {
-					self.showAlert("", message: error!, actionTitle: "ok")
-					return
-				}
-				self.dismissViewControllerAnimated(true, completion: nil)
-			}
-			api.putAStudentLocation(objectId, mapString: mapString, mediaURL: mediaURL) { (success, error) in
-				guard error == nil else {
-					self.showAlert("", message: error!, actionTitle: "ok")
-					return
-				}
-				self.dismissViewControllerAnimated(true, completion: nil)
-			}
+		guard linkTextField.text != "" else {
+			showAlert("Empty Field", message: "Please enter a link to share", actionTitle: "OK")
 			return
 		}
+		postLocation()
 	}
 	
 	@IBAction func cancelPressed(sender: AnyObject) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
-	
 	
 	// Geocode the address
 	func getLocation(place: String) {
@@ -84,12 +71,14 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
 		let geocoder = CLGeocoder()
 		geocoder.geocodeAddressString(place) { (placemark, error) in
 			guard error == nil else {
+				self.spinner.stopAnimating()
 				self.showAlert("alert", message: "Unable to find the location", actionTitle: "Try Again")
 				return
 			}
 			self.userLocation = placemark!
 			self.configureMap()
 			self.spinner.stopAnimating()
+			self.submitView()
 			}
 		}
 	
@@ -112,7 +101,28 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
 			self.mapView.regionThatFits(region)
 		}
 	}
+	
+	// post a student locaiton
+	func postLocation() {
+		let mapString = userLocationField.text!
+		let mediaURL = linkTextField.text!
+		api.postAStudentLocation(mapString, mediaURL: mediaURL) { (data, error) in
+			guard error == nil else {
+				self.showAlert("", message: error!, actionTitle: "ok")
+				return
+			}
+			self.dismissViewControllerAnimated(true, completion: nil)
+		}
+	}
+	
+	// Get keyboard dismissal
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return false
+	}
 }
+
+
 
 
 

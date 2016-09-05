@@ -9,7 +9,7 @@
 import UIKit
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var email: UITextField!
 	@IBOutlet weak var password: UITextField!
@@ -17,8 +17,14 @@ class LoginViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.email.delegate = self
+		self.password.delegate = self
 	}
-
+	
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		self.view.endEditing(true)
+	}
+	
 	// Mark: Login
 	
 	@IBAction func loginPressed(sender: AnyObject) {
@@ -50,4 +56,16 @@ class LoginViewController: UIViewController {
 		moveToTabBar()
 	}
 	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		if (email.text?.isEmpty ?? true) {
+			password.enabled = false
+			textField.resignFirstResponder()
+		} else if textField == email {
+			password.enabled = true
+			password.becomeFirstResponder()
+		} else {
+			textField.resignFirstResponder()
+		}
+		return true
+	}
 }
