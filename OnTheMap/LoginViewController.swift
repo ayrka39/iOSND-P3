@@ -6,19 +6,28 @@
 //  Copyright © 2016 David. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
 	@IBOutlet weak var email: UITextField!
 	@IBOutlet weak var password: UITextField!
+	@IBOutlet weak var facebookButton: FBSDKLoginButton!
 	@IBOutlet weak var spinner: UIActivityIndicatorView!
+	
+	let facebook = FacebookClient()
+	var accessToken: String!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.email.delegate = self
 		self.password.delegate = self
+		self.facebookButton.delegate = self
+		FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -28,14 +37,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 	// Mark: Login
 	
 	@IBAction func loginPressed(sender: AnyObject) {
-
-		let auth = AuthManager()
-		auth.createSessionID(username: email.text!, password: password.text!) { (success, error) in
+		auth.login(username: email.text!, password: password.text!) { (success, error) in
+			self.spinner.startAnimating()
 			guard error == nil else {
+				self.spinner.stopAnimating()
 				self.showAlertLogin("Login Failed", message: error!, actionTitle: "Dismiss")
 				return
 			}
-			self.spinner.startAnimating()
 			self.loginSuccess()
 		}
 	}
@@ -47,9 +55,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		app.openURL(url)
 	}
 	
-	@IBAction func signInwithFacebookPressed(sender: AnyObject) {
-		showAlertLogin("sorry 😥", message: "SignIn with Facebook is currently unavailable. Please try to log in with Udacity username", actionTitle: "OK")
-		
+	// login and logout via facebook
+	
+	func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+		accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+		facebook.login(accessToken) { (success, error) in
+			guard error == nil else {
+				print("login fail \(error)")
+				return
+			}
+			self.loginSuccess()
+		}
+	}
+	
+	func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+		accessToken = ""
 	}
 	
 	private func loginSuccess() {

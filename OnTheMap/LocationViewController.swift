@@ -25,11 +25,8 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDe
 	@IBOutlet weak var findButton: UIButton!
 	@IBOutlet weak var submitButton: UIButton!
 	
-	let api = DataManager()
+	let api = ParseClient()
 	var userLocation = [CLPlacemark]()
-	var userLatitude = CLLocationDegrees()
-	var userLongitude = CLLocationDegrees()
-	var userLocationName = ""
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -88,12 +85,11 @@ class LocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDe
 		let placemarkToPlace = MKPlacemark(placemark: topPlacemarkResult)
 		let annotation = MKPointAnnotation()
 		annotation.coordinate = placemarkToPlace.coordinate
-		userLocationName = placemarkToPlace.name!
-		userLatitude = annotation.coordinate.latitude
-		userLongitude = annotation.coordinate.longitude
+		userInfo.latitude = annotation.coordinate.latitude
+		userInfo.longitude = annotation.coordinate.longitude
 		
-		let pinCoordinate = CLLocationCoordinate2DMake(userLatitude, userLongitude)
-		let span = MKCoordinateSpanMake(0.1, 0.1)
+		let pinCoordinate = CLLocationCoordinate2DMake(userInfo.latitude, userInfo.longitude)
+		let span = MKCoordinateSpanMake(1, 1)
 		let region = MKCoordinateRegionMake(pinCoordinate, span)
 		performUpdateOnMain() {
 			self.mapView.addAnnotation(annotation)

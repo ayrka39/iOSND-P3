@@ -14,9 +14,6 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var spinner: UIActivityIndicatorView!
 
-	let api = DataManager()
-	let auth = AuthManager()
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		mapView.delegate = self
@@ -55,14 +52,16 @@ class MapViewController: UIViewController {
 	
 	// log out
 	@IBAction func logoutPressed(sender: AnyObject) {
-		auth.deleteSessionID { (success, error) in
-			guard error == nil else {
-				self.showAlert("Error", message: error!, actionTitle: "Dismiss")
-				return
-			}
-			self.moveToLogin()
+		spinner.startAnimating()
+		auth.logout { (success, error) in
+			guard error == nil else { return }
+		}
+		performUpdateOnMain() {
+			self.spinner.stopAnimating()
+			self.dismissViewControllerAnimated(true, completion: nil)
 		}
 	}
+	
 	
 	// reload data
 	@IBAction func refreshPressed(sender: AnyObject) {
@@ -93,8 +92,8 @@ extension MapViewController: MKMapViewDelegate {
 	func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
 		let app = UIApplication.sharedApplication()
 		if control == view.rightCalloutAccessoryView {
-			if var mediaURL = (view.annotation?.subtitle!)! as String? {
-				if mediaURL.hasPrefix("www") {
+			if var mediaURL = view.annotation?.subtitle! as String? {
+				if mediaURL.hasPrefix("www.") {
 					mediaURL = "https://" + mediaURL
 				}
 				guard let url = NSURL(string: mediaURL) where app.canOpenURL(url) else {

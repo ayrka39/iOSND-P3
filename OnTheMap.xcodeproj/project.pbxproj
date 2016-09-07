@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3C25CB741D7C26CD00066FDC /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C25CB731D7C26CD00066FDC /* LocationView.swift */; };
+		3C25CB761D807FB200066FDC /* FacebookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C25CB751D807FB200066FDC /* FacebookClient.swift */; };
+		3C25CB7A1D80885A00066FDC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C25CB771D80885A00066FDC /* FBSDKCoreKit.framework */; };
+		3C25CB7B1D80885A00066FDC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C25CB781D80885A00066FDC /* FBSDKLoginKit.framework */; };
+		3C25CB7C1D80885A00066FDC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C25CB791D80885A00066FDC /* Bolts.framework */; };
 		3CB4BF951D61F4AC009407AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4BF941D61F4AC009407AA /* AppDelegate.swift */; };
 		3CB4BF971D61F4AC009407AA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4BF961D61F4AC009407AA /* LoginViewController.swift */; };
 		3CB4BF9A1D61F4AC009407AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB4BF981D61F4AC009407AA /* Main.storyboard */; };
@@ -26,19 +30,19 @@
 		3CB4C0AC1D6FCCCF009407AA /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0AB1D6FCCCF009407AA /* GCD.swift */; };
 		3CB4C0AE1D6FCCE2009407AA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0AD1D6FCCE2009407AA /* Utils.swift */; };
 		3CB4C0B01D6FCDF9009407AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0AF1D6FCDF9009407AA /* User.swift */; };
-		3CB4C0B21D6FCE0A009407AA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0B11D6FCE0A009407AA /* DataManager.swift */; };
+		3CB4C0B21D6FCE0A009407AA /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0B11D6FCE0A009407AA /* ParseClient.swift */; };
 		3CB4C0B91D703208009407AA /* Alert+others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0B81D703208009407AA /* Alert+others.swift */; };
-		3CB4C0BD1D72518E009407AA /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0BC1D72518E009407AA /* DataTask.swift */; };
-		3CB4C0C31D73C03C009407AA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0C21D73C03C009407AA /* AuthManager.swift */; };
+		3CB4C0C31D73C03C009407AA /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0C21D73C03C009407AA /* UdacityClient.swift */; };
 		3CB4C0C71D74FC57009407AA /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4C0C61D74FC57009407AA /* StudentLocations.swift */; };
-		3CC5449E1D76273500F6D600 /* GetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5449D1D76273500F6D600 /* GetRequest.swift */; };
-		3CC544A01D76275000F6D600 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5449F1D76275000F6D600 /* PostRequest.swift */; };
-		3CC544A21D76276200F6D600 /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC544A11D76276200F6D600 /* DeleteRequest.swift */; };
-		3CC544A41D76276D00F6D600 /* PutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC544A31D76276D00F6D600 /* PutRequest.swift */; };
+		3CC5449E1D76273500F6D600 /* ParseConvinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5449D1D76273500F6D600 /* ParseConvinience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C25CB731D7C26CD00066FDC /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		3C25CB751D807FB200066FDC /* FacebookClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookClient.swift; sourceTree = "<group>"; };
+		3C25CB771D80885A00066FDC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		3C25CB781D80885A00066FDC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		3C25CB791D80885A00066FDC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3CB4BF911D61F4AC009407AA /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB4BF941D61F4AC009407AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CB4BF961D61F4AC009407AA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -59,15 +63,11 @@
 		3CB4C0AB1D6FCCCF009407AA /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		3CB4C0AD1D6FCCE2009407AA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3CB4C0AF1D6FCDF9009407AA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		3CB4C0B11D6FCE0A009407AA /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3CB4C0B11D6FCE0A009407AA /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		3CB4C0B81D703208009407AA /* Alert+others.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert+others.swift"; sourceTree = "<group>"; };
-		3CB4C0BC1D72518E009407AA /* DataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
-		3CB4C0C21D73C03C009407AA /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		3CB4C0C21D73C03C009407AA /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		3CB4C0C61D74FC57009407AA /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
-		3CC5449D1D76273500F6D600 /* GetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRequest.swift; sourceTree = "<group>"; };
-		3CC5449F1D76275000F6D600 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
-		3CC544A11D76276200F6D600 /* DeleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
-		3CC544A31D76276D00F6D600 /* PutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutRequest.swift; sourceTree = "<group>"; };
+		3CC5449D1D76273500F6D600 /* ParseConvinience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvinience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C25CB7C1D80885A00066FDC /* Bolts.framework in Frameworks */,
+				3C25CB7B1D80885A00066FDC /* FBSDKLoginKit.framework in Frameworks */,
+				3C25CB7A1D80885A00066FDC /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,10 +103,10 @@
 		3CB4BF931D61F4AC009407AA /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				3CB4C0B71D701B7C009407AA /* Utils */,
 				3CB4BFAF1D65C2D9009407AA /* Model */,
-				3CB4BFAE1D65C2CB009407AA /* Controller */,
 				3CB4BFAD1D65C2B7009407AA /* View */,
+				3CB4BFAE1D65C2CB009407AA /* Controller */,
+				3CB4C0B71D701B7C009407AA /* Utils */,
 				3CB4BFA61D652020009407AA /* Supporting Files */,
 			);
 			path = OnTheMap;
@@ -112,6 +115,9 @@
 		3CB4BFA61D652020009407AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3C25CB771D80885A00066FDC /* FBSDKCoreKit.framework */,
+				3C25CB781D80885A00066FDC /* FBSDKLoginKit.framework */,
+				3C25CB791D80885A00066FDC /* Bolts.framework */,
 				3CB4BF941D61F4AC009407AA /* AppDelegate.swift */,
 				3CB4BF9B1D61F4AC009407AA /* Assets.xcassets */,
 				3CB4BFA01D61F4AC009407AA /* Info.plist */,
@@ -167,13 +173,10 @@
 		3CB4C0C81D75117B009407AA /* API */ = {
 			isa = PBXGroup;
 			children = (
-				3CB4C0C21D73C03C009407AA /* AuthManager.swift */,
-				3CB4C0B11D6FCE0A009407AA /* DataManager.swift */,
-				3CC5449D1D76273500F6D600 /* GetRequest.swift */,
-				3CC5449F1D76275000F6D600 /* PostRequest.swift */,
-				3CC544A31D76276D00F6D600 /* PutRequest.swift */,
-				3CC544A11D76276200F6D600 /* DeleteRequest.swift */,
-				3CB4C0BC1D72518E009407AA /* DataTask.swift */,
+				3CB4C0C21D73C03C009407AA /* UdacityClient.swift */,
+				3CB4C0B11D6FCE0A009407AA /* ParseClient.swift */,
+				3CC5449D1D76273500F6D600 /* ParseConvinience.swift */,
+				3C25CB751D807FB200066FDC /* FacebookClient.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -273,24 +276,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CB4C0B01D6FCDF9009407AA /* User.swift in Sources */,
-				3CC544A01D76275000F6D600 /* PostRequest.swift in Sources */,
-				3CB4C0C31D73C03C009407AA /* AuthManager.swift in Sources */,
-				3CC544A21D76276200F6D600 /* DeleteRequest.swift in Sources */,
+				3CB4C0C31D73C03C009407AA /* UdacityClient.swift in Sources */,
 				3CB4BFBB1D665CB8009407AA /* LocationViewController.swift in Sources */,
-				3CC544A41D76276D00F6D600 /* PutRequest.swift in Sources */,
 				3CB4C0B91D703208009407AA /* Alert+others.swift in Sources */,
+				3C25CB761D807FB200066FDC /* FacebookClient.swift in Sources */,
 				3CB4BFB51D665242009407AA /* CustomTextField.swift in Sources */,
 				3CB4BF971D61F4AC009407AA /* LoginViewController.swift in Sources */,
 				3CB4C0C71D74FC57009407AA /* StudentLocations.swift in Sources */,
-				3CB4C0BD1D72518E009407AA /* DataTask.swift in Sources */,
 				3CB4C0AE1D6FCCE2009407AA /* Utils.swift in Sources */,
 				3CB4BFB91D665BF4009407AA /* ListViewController.swift in Sources */,
-				3CB4C0B21D6FCE0A009407AA /* DataManager.swift in Sources */,
+				3CB4C0B21D6FCE0A009407AA /* ParseClient.swift in Sources */,
 				3CB4C0AC1D6FCCCF009407AA /* GCD.swift in Sources */,
 				3CB4BFB31D664F0D009407AA /* CustomButton.swift in Sources */,
 				3CB4BFB71D665BE5009407AA /* MapViewController.swift in Sources */,
 				3C25CB741D7C26CD00066FDC /* LocationView.swift in Sources */,
-				3CC5449E1D76273500F6D600 /* GetRequest.swift in Sources */,
+				3CC5449E1D76273500F6D600 /* ParseConvinience.swift in Sources */,
 				3CB4BF951D61F4AC009407AA /* AppDelegate.swift in Sources */,
 				3CB4BFE71D692792009407AA /* Student.swift in Sources */,
 				3CB4BFE51D69246C009407AA /* Constants.swift in Sources */,
@@ -414,6 +414,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/OnTheMap",
 				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -434,6 +435,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/OnTheMap",
 				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

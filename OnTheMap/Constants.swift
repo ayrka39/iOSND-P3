@@ -12,7 +12,7 @@ struct Udacity {
 	
 	static let baseURL = "https://www.udacity.com/api/"
 	static let signUp = "https://www.udacity.com/account/auth#!/signup"
-	static let userInfo = "users/"
+	static let users = "users/"
 	static let sessionPath = "session"
 }
 
@@ -28,8 +28,8 @@ struct Parameter {
 	
 	static let allLocations = "?limit=100&order=-updatedAt"
 	static let oneLocation = "?where=%7B%22uniqueKey%22%3A%22\(uniqueKey)%22%7D"
-	static let uniqueKey = "\(User.sharedInstacne.uniqueKey)"
-	static let objectID = "\(User.sharedInstacne.objectId)"
+	static let uniqueKey = "\(userInfo.uniqueKey)"
+	static let objectID = "\(userInfo.objectId)"
 	
 }
 

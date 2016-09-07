@@ -15,7 +15,6 @@
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
-            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -63,7 +62,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="0.28802257269999998" blue="0.062716675200000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,19 +83,20 @@
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="CIQ-3U-Xgd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzk-xh-bjh" customClass="CustomButton" customModule="OnTheMap" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzk-xh-bjh" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="20" y="532" width="560" height="50"/>
                                 <color key="backgroundColor" red="0.22352941176470589" green="0.32941176470588235" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hy4-j4-UeZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
-                                <state key="normal" title="Sign in with Facebook">
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="signInwithFacebookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zz3-IL-S9U"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cz-zk-R99">
                                 <rect key="frame" x="200" y="174" width="200" height="35"/>
@@ -122,8 +122,8 @@
                                     <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JjP-GC-VI8"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-Ed-IgT">
-                                <rect key="frame" x="291" y="289" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-Ed-IgT">
+                                <rect key="frame" x="292" y="288" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.99607843139999996" green="0.50196078430000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -152,6 +152,7 @@
                     </view>
                     <connections>
                         <outlet property="email" destination="Bj8-6q-eLm" id="2kC-HN-Sch"/>
+                        <outlet property="facebookButton" destination="kzk-xh-bjh" id="X1d-QY-YDV"/>
                         <outlet property="password" destination="VbZ-a5-6ps" id="FKZ-Bm-EP8"/>
                         <outlet property="spinner" destination="8Sa-Ed-IgT" id="wJS-b7-mbK"/>
                     </connections>
@@ -231,7 +232,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" style="done" id="Qfb-9u-gwd">
                             <connections>
                                 <action selector="logoutPressed:" destination="Eko-4I-iYy" id="kDT-uo-9fa"/>
-                                <segue destination="HtW-WY-gTa" kind="unwind" unwindAction="logoutPressed:" id="wlz-Rp-tOg"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -253,7 +253,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ei-zC-WdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="HtW-WY-gTa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2866" y="1101"/>
         </scene>
@@ -460,8 +459,9 @@ Cg
                                             </mask>
                                         </variation>
                                     </textField>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rDI-0d-WxZ">
-                                        <rect key="frame" x="291" y="165" width="20" height="20"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rDI-0d-WxZ">
+                                        <rect key="frame" x="283" y="156" width="37" height="37"/>
+                                        <color key="color" red="0.99607843139999996" green="0.50196078430000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25882352941176473" green="0.46274509803921571" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>

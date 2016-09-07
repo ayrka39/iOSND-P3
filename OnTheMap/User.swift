@@ -10,8 +10,6 @@ import Foundation
 
 class User {
 	
-	static let sharedInstacne = User()
-	
 	var sessionID = ""
 	var uniqueKey = ""
 	var sessionExp = ""
@@ -26,3 +24,5 @@ class User {
 	var createdAt = ""
 	var updatedAt = ""
 }
+
+var userInfo = User()

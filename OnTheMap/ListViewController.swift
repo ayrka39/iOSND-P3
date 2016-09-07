@@ -10,10 +10,6 @@ import UIKit
 
 class ListViewController: UITableViewController {
 	
-	
-	let api = DataManager()
-	let auth = AuthManager()
-	
 	var spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
 	
 	override func viewWillAppear(animated: Bool) {
@@ -38,7 +34,7 @@ class ListViewController: UITableViewController {
 		let app = UIApplication.sharedApplication()
 		let user = wonderful.students[indexPath.row]
 		var mediaURL = user.mediaURL
-		if mediaURL!.hasPrefix("www") {
+		if mediaURL!.hasPrefix("www.") {
 			mediaURL = "https://" + mediaURL!
 		}
 		guard let url = NSURL(string: mediaURL!) where app.canOpenURL(url) else {
@@ -48,20 +44,6 @@ class ListViewController: UITableViewController {
 		app.openURL(url)
 	}
 	
-	
-	func loadStudentLocation() {
-		spinner.startAnimating()
-		api.getStudentLocations { (success, error) in
-			guard error == nil else {
-				self.showAlert("Alert", message: error!, actionTitle: "Dismiss")
-				return
-			}
-			performUpdateOnMain() {
-				self.tableView.reloadData()
-				self.spinner.stopAnimating()
-			}
-		}
-	}
 	
 	// update location
 	@IBAction func pinPressed(sender: AnyObject) {
@@ -76,19 +58,34 @@ class ListViewController: UITableViewController {
 	
 	// log out
 	@IBAction func logoutPressed(sender: AnyObject) {
-		auth.deleteSessionID { (success, error) in
-			guard error == nil else {
-				self.showAlert("Error", message: error!, actionTitle: "Dismiss")
-				return
-			}
-			self.moveToLogin()
+		spinner.startAnimating()
+		auth.logout { (success, error) in
+			guard error == nil else { return }
 		}
+		performUpdateOnMain() {
+			self.spinner.stopAnimating()
+			self.dismissViewControllerAnimated(true, completion: nil)
+		}
+
 	}
 	
 	// reload data
 	@IBAction func refreshPressed(sender: AnyObject) {
 		loadStudentLocation()
-		
+	}
+	
+	func loadStudentLocation() {
+		spinner.startAnimating()
+		api.getStudentLocations { (success, error) in
+			guard error == nil else {
+				self.showAlert("Alert", message: error!, actionTitle: "Dismiss")
+				return
+			}
+			performUpdateOnMain() {
+				self.tableView.reloadData()
+				self.spinner.stopAnimating()
+			}
+		}
 	}
 
-	}
+}
